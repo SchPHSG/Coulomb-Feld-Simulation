@@ -1,3 +1,6 @@
+// adapted from: https://github.com/vlukashevich/vector-fileds-processing 
+// Vektorfelder berechnen erklärt
+
 class Cell {
   int i, j;  
   PVector vec;
@@ -16,4 +19,31 @@ class Cell {
     mag = vec.mag();
     arg = vec.heading();
   }
- } 
+}
+  //Abbilden
+  void show () {
+    if (mag != 0) {
+      push();
+      strokeWeight(2);
+      stroke(0);
+  
+      float r = 8; 
+      float l = len;
+      float buffer = 5;
+  
+      translate((i + 0.5) * l, (j + 0.5) * l);
+      rotate(arg);
+      line(-l/2 + buffer, 0, l/2 - buffer, 0);
+      
+      translate(l/2 - buffer, 0);
+  
+      float a = radians(150);
+      float x1 = r * cos(a);
+      float y1 = r * sin(a);
+      
+      line(0, 0, x1, y1);  
+      line(0, 0, x1, -y1);
+        
+      pop();
+    }
+  }
