@@ -19,7 +19,7 @@ class Cell {
     mag = vec.mag();
     arg = vec.heading();
   }
-}
+
   //Abbilden
   void show () {
     if (mag != 0) {
@@ -47,3 +47,4 @@ class Cell {
       pop();
     }
   }
+ }
