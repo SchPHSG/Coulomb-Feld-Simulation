@@ -1,7 +1,7 @@
 //adapted from: https://github.com/vlukashevich/vector-fileds-processing
 Mover mover;
 float mass=1;
-
+PImage bg;
 //Pfeile für Vektorfeld
 int margin_x = 60;
 int margin_y = 60;
@@ -16,10 +16,10 @@ PGraphics field;
 PImage img;
 color[][] colors;
 
-float load1 =1;
-float load2 =1;
-PVector pos_load1 = new PVector(-3,0);
-PVector pos_load2 = new PVector(3,0);
+float load1 = -1;
+float load2 = -1;
+PVector pos_load1 = new PVector(2.5,0);
+PVector pos_load2 = new PVector(-2.5,0);
 float load_ref = 1;
   
 //Coulomb Feld berechnen, Ladungen
@@ -35,7 +35,6 @@ PVector vector__field (float x, float y, float load1, float load2,PVector pos_lo
   return new PVector(u, v);
 }
 
-PImage bg;
 //Window settings
 void setup () {
 //Grösse Feld
@@ -82,5 +81,15 @@ void setup () {
   save("test.png");
   bg = loadImage("test.png");//Lädt img damits zur Verfügung steht
   mover = new Mover(load_ref,load1,load2,pos_load1,pos_load2,mass,new PVector(0,0));//erstes Platzieren des Movers
-
-  }
+}
+// Dauerschleife, wenn nicht interrupted -> Eine Berechnung pro frame?
+void draw() {
+  // Hintergrund zeichnen/Bild laden
+  background(255);//Jedes frame setzt BG auf weiss
+  background(bg);//Setzt das Bild hinein
+ 
+  // Update the location
+  mover.update();//Berechnet neue Position des Teilchen
+  // Display the Mover
+  mover.display(); //
+}
