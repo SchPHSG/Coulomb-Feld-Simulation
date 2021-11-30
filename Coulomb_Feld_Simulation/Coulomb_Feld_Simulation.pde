@@ -12,18 +12,19 @@ float off;
 
 Cell grid[][];
 PGraphics field;
+//Speichert img und färbt ein
 PImage img;
 color[][] colors;
 
 float load1 =1;
 float load2 =1;
-PVector pos_load1 =new PVector(-3,0);
+PVector pos_load1 = new PVector(-3,0);
 PVector pos_load2 = new PVector(3,0);
 float load_ref = 1;
   
 //Coulomb Feld berechnen, Ladungen
 PVector vector__field (float x, float y, float load1, float load2,PVector pos_load1,PVector pos_load2) {
-    //Mappen auf dem Bildschirm
+  //Mappen auf dem Bildschirm
   x = map(x, 0, width, -5,5);
   y = map(y, 0, height, -5,5);//
 
@@ -80,4 +81,6 @@ void setup () {
 //Speichern des abgebildeten Bild mit:
   save("test.png");
   bg = loadImage("test.png");//Lädt img damits zur Verfügung steht
+  mover = new Mover(load_ref,load1,load2,pos_load1,pos_load2,mass,new PVector(0,0));//erstes Platzieren des Movers
+
   }
