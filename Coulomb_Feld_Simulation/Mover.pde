@@ -39,3 +39,44 @@ class Mover {
     
   }
   }
+  
+    void update() {
+    oldLocation = location;
+    // Compute a vector that points from location to mouse
+   // PVector mouse = new PVector(mouseX,mouseY);
+    PVector acceleration = coulomb_force(q1,q2,ref_q,p1,p2,location).mult(0.01/massConst);
+    // Set magnitude of acceleration
+    //acceleration.setMag(0.2);
+    
+    // Velocity changes according to acceleration
+    velocity.add(acceleration);
+    // Limit the velocity by topspeed
+    velocity.limit(topspeed);
+    // Location changes by velocity
+    location.add(velocity);
+  }
+ 
+ 
+  void display() {
+  
+  stroke(255);
+
+    strokeWeight(2);
+    fill(127);
+
+        fill(255,0,0);
+   } 
+    ellipse(startLocation.x,startLocation.y,30,30);
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
