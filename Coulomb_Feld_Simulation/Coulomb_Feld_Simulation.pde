@@ -18,8 +18,8 @@ color[][] colors;
 
 float load1 = -1;
 float load2 = -1;
-PVector pos_load1 = new PVector(2.5,0);
-PVector pos_load2 = new PVector(-2.5,0);
+PVector pos_load1 = new PVector(4,0);
+PVector pos_load2 = new PVector(-4,0);
 float load_ref = 1;
   
 //Coulomb Feld berechnen, Ladungen
