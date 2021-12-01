@@ -93,3 +93,12 @@ void draw() {
   // Display the Mover
   mover.display(); //
 }
+// Interaktion mit dem Bildschirm 
+// Neue Probeladung positionieren
+void mousePressed() {//Event: registriert Mausklick auf dem Bildschirm
+  float mappedMousex = map(mouseX,0,width,-5,5);
+  float mappedMousey = map(mouseY,0,height,-5,5);
+  // Mover neu laden
+  mover = new Mover(load_ref,load1,load2,pos_load1,pos_load2,mass,new PVector(mappedMousex,mappedMousey));
+  
+}
